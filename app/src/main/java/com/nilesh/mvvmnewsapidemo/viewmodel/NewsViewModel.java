@@ -1,6 +1,7 @@
 package com.nilesh.mvvmnewsapidemo.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -21,14 +22,20 @@ public class NewsViewModel extends AndroidViewModel {
     public NewsViewModel(@NonNull Application application) {
         super(application);
 
+        Log.i("phondenilesh", "NewsViewModel constructor");
         repository = new Repository();
     }
 
 
     public LiveData<NewsResponseModel> getLiveData() {
+        Log.i("phondenilesh", "NewsViewModel getLiveData");
         if(liveData == null) {
+
+            Log.i("phondenilesh", "NewsViewModel getLiveData if");
             liveData =  repository.getNewsList();
+
         }
+
         return  liveData;
     }
 }

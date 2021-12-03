@@ -39,10 +39,14 @@ public class NewsActivity extends AppCompatActivity {
         newsViewModel.getLiveData().observe(this, new Observer<NewsResponseModel>() {
             @Override
             public void onChanged(NewsResponseModel newsResponseModel) {
+
+                Log.i("phondenilesh", "observing...");
                 list.addAll(newsResponseModel.articles);
 
                 NewsAdapter adapter = new NewsAdapter(list, getApplicationContext());
                 recyclerView.setAdapter(adapter);
+
+
             }
         });
     }

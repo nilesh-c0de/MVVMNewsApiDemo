@@ -1,5 +1,7 @@
 package com.nilesh.mvvmnewsapidemo.repository;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -21,6 +23,10 @@ public class Repository {
 
 
     public MutableLiveData<NewsResponseModel> getNewsList() {
+
+        Log.i("phondenilesh", "Repository getNewsList");
+
+
         NewsApi api = RetrofitClient.getRetrofitClient().create(NewsApi.class);
 
         Call<NewsResponseModel> call = api.getNewsList("windows",
@@ -30,6 +36,8 @@ public class Repository {
             @Override
             public void onResponse(Call<NewsResponseModel> call, Response<NewsResponseModel> response) {
                 mutableLiveData.setValue(response.body());
+
+                Log.i("phondenilesh", "Repository onResponse");
             }
 
             @Override
